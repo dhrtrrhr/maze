@@ -1,0 +1,83 @@
+import json
+
+Walls = [
+
+     {
+        "X" :118,
+        "Y" :0,
+        "color":[250, 0, 0],
+        "wide":10,
+        "hight":400
+              },
+     {    "X" :214,
+              "Y" :50,
+              "color":[250, 0, 0],
+              "wide":10,
+              "hight":450
+              },
+
+     {"X" :308,
+              "Y" :321,
+              "color":[250, 0, 0],
+              "wide":10,
+                  "hight":300
+                  },
+
+    {"X": 308,
+     "Y": 0,
+     "color": [250, 0, 0],
+     "wide": 10,
+     "hight": 251
+     },
+     {"X" :396,
+                  "Y" :0,
+                  "color":[250, 0, 0],
+                  "wide":10,
+                  "hight":50
+                  },
+     {"X" :396,
+                  "Y" :110,
+                  "color":[250, 0, 0],
+                  "wide":10,
+                  "hight":300
+                  },
+     {"X" :118,
+                  "Y" :0,
+                  "color":[250, 0, 0],
+                  "wide":10,
+                  "hight":400
+                  },
+     {"X" :396,
+                  "Y" :470,
+                  "color":[250, 0, 0],
+                  "wide":10,
+                  "hight":50
+                  },
+
+     {"X" :489,
+                  "Y" :0,
+                  "color":[250, 0, 0],
+                  "wide":10,
+                  "hight":90
+                  },
+    {"X" :489,
+                  "Y" :160,
+                  "color":[250, 0, 0],
+                  "wide":10,
+                  "hight":400
+                  },
+     {"X" :396,
+                  "Y" :160,
+                  "color":[250, 0, 0],
+                  "wide":100,
+                  "hight":10
+                  },
+
+
+
+
+]
+
+
+with open("../Walls.json", "w", encoding="utf-8") as file:
+    json.dump(Walls, file, ensure_ascii=False, indent=4)

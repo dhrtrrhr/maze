@@ -1,4 +1,7 @@
+import json
+
 import photo
+
 import pygame
 window = pygame.display.set_mode([700,500])
 clock = pygame.time.Clock()
@@ -79,20 +82,21 @@ tresur = Treasure("photo/treasure.png",600,350,80,70)
 cyborg = Enemy(489,280,"photo/cyborg.png",2,50,50,650)
 Walls = [
 
-    Wall (118,0,[250,0,0],10,400),
-    Wall (214,50,[250,0,0],10,450),
-    Wall (308,0,[250,0,0],10,251),
-    Wall (308,321,[250,0,0],10,300),
-    Wall (396,0,[250,0,0],10,50),
-    Wall (396,110,[250,0,0],10,300),
-    Wall (396,470,[250,0,0],10,50),
-    Wall (489,0,[250,0,0],10,90),
-    Wall (489,160,[250,0,0],10,400),
-    Wall (396,310,[250,0,0],100,10)
 
 ]
+with open("Walls.json", "r", encoding="utf-8") as file:
+    Walls_data = json.load(file)
+
+for wal in Walls_data:
+    Walls.append(Wall(wal["X"], wal["Y"], wal["color"] , wal["wide"], wal["hight"]))
+pygame.mixer.init()
+pygame.mixer.music.load("sounds/jungles.ogg")
+pygame.mixer.music.play(-1)
+pygame.mixer.music.set_volume(1.5)
 
 
+kick_sound = pygame.mixer.Sound("sounds/kick.ogg")
+money_sound = pygame.mixer.Sound("sounds/money.ogg")
 
 
 game = True
@@ -117,9 +121,16 @@ while game:
         if hero.hitbox.colliderect(wall.hitbox):
             hero.hitbox.x = 0
             hero.hitbox.y = 0
+            kick_sound.play()
         if hero.hitbox.colliderect(cyborg.hitbox):
             hero.hitbox.x = 0
             hero.hitbox.y = 0
+        if hero.hitbox.colliderect(tresur.hitbox):
+            money_sound.play()
+
+            print("Перемога")
+
+
 
 
     for w in Walls:
